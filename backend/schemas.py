@@ -21,3 +21,16 @@ class ServiceRead(BaseModel):
     url: str
     check_interval: int
     created_at: datetime
+
+
+class ServiceCheckRead(BaseModel):
+    """Data returned by the API for one health check."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    status: str
+    status_code: int | None
+    response_time_ms: float | None
+    checked_at: datetime
+    error: str | None
